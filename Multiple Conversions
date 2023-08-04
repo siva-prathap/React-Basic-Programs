@@ -1,0 +1,69 @@
+import React, { Component } from 'react'
+
+export class Convert2 extends Component {
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+        inr:0,
+        usd:0,
+        euro:0,
+        yen:0
+      }
+    }
+    inrCh=(event)=>{
+        this.setState({
+            inr:event.target.value,
+            usd:event.target.value/82.09,
+            euro:event.target.value/91.35,
+            yen:event.target.value*1.71
+
+        })
+    }
+    usdCh=(event)=>{
+        this.setState({
+            usd:event.target.value,
+            inr:event.target.value*82.09,
+            euro:event.target.value/1.11,
+            yen:event.target.value/140.17
+        })
+    }
+    euroCh=(event)=>{
+        this.setState({
+            euro:event.target.value,
+            inr:event.target.value*91.35,
+            usd:event.target.value*1.11,
+            yen:event.target.value*156.23
+
+        })
+    }
+    yenCh=(event)=>{
+        this.setState({
+            yen:event.target.value,
+            inr:event.target.value/1.71,
+            usd:event.target.value/140.17,
+            euro:event.target.value/156.19
+        })
+    }
+
+  render() {
+    const {inr,usd,euro,yen}=this.state
+    return (
+      <div>
+        <label>Inr</label>
+        <input value={inr} onChange={this.inrCh}/>
+        <br></br>
+        <label>Usd</label>
+        <input value={usd} onChange={this.usdCh}/>
+        <br></br>
+        <label>Euro</label>
+        <input value={euro} onChange={this.euroCh}/>
+        <br></br>
+        <label>Yen</label>
+        <input value={yen} onChange={this.yenCh}/>
+      </div>
+    )
+  }
+}
+
+export default Convert2
